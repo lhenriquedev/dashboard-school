@@ -25,6 +25,7 @@
 
 ## Tecnologias utilizadas no projeto
 
+- [x] [Vite](https://vitejs.dev/)
 - [x] [React](https://pt-br.reactjs.org/)
 - [x] [Typescript](https://pt-br.reactjs.org/)
 - [x] [React Hook Form](https://react-hook-form.com/)
@@ -47,7 +48,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone <https://github.com/lhenriquedev/dashboard-school.git>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd dashbord-school
+$ cd dashboard-school
 
 # Instale as dependências
 $ npm install
