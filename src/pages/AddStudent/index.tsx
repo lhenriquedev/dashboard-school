@@ -43,8 +43,6 @@ export function AddStudent() {
     }
   };
 
-  // adicionar campo telefone, RG da mãe
-
   return (
     <S.AddStudentContainer>
       <S.AddStudentContent>

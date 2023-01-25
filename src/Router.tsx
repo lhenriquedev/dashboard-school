@@ -3,6 +3,7 @@ import { DefaultLayout } from "./layout/DefaultLayout";
 import { Profile } from "./pages/Profile";
 import { AddStudent } from "./pages/AddStudent";
 import { Student } from "./pages/Students";
+import { EditStudent } from "./pages/EditStudent";
 
 export function Router() {
   return (
@@ -11,7 +12,7 @@ export function Router() {
         <Route path="profile" element={<Profile />} />
         <Route path="students" element={<Student />} />
         <Route path="add-student" element={<AddStudent />} />
-        {/* <Route path="students/:id" element={<StudentById />} /> */}
+        <Route path="students/:id" element={<EditStudent />} />
       </Route>
     </Routes>
   );
