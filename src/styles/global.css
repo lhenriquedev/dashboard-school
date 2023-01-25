@@ -1,0 +1,29 @@
+/* m2O3rMziqyO0xPQQ */
+
+.paginate {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  list-style: none;
+  margin-right: 1rem;
+}
+
+
+.paginate li a {
+  cursor: pointer;
+  background: #F5F5F5;
+  border-radius: 4px;
+  padding: 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;       
+  transition: 150ms ease; 
+}
+
+.paginate li a:hover {
+  background-color: #6ee7b7;
+  color: #ffffff;
+}
+
+.paginate li.active a {
+  color: #fff;
+  background-color: #34d399;
+}

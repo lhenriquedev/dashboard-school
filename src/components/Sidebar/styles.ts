@@ -9,7 +9,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
 
-  width: 15.625rem;
+  width: 18.75rem;
   height: 100vh;
   padding: 1rem;
   border-right: 1px solid #e5e7eb;

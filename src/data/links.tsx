@@ -10,14 +10,19 @@ export const linksArr = [
   //   icon: <HiOutlineSquares2X2 />,
   //   to: "/",
   // },
+  // {
+  //   label: "Meu perfil",
+  //   icon: <HiOutlineUser />,
+  //   to: "/profile",
+  // },
   {
     label: "Alunos",
     icon: <HiOutlineUserGroup />,
     to: "/students",
   },
   {
-    label: "Meu perfil",
+    label: "Adicionar aluno",
     icon: <HiOutlineUser />,
-    to: "/profile",
+    to: "/add-student",
   },
 ];

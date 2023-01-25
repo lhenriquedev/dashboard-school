@@ -13,7 +13,7 @@ export function Sidebar() {
       {linksArr.map((link) => {
         const { icon, label, to } = link;
         return (
-          <S.LinkContainer isActive={pathname === to}>
+          <S.LinkContainer key={label} isActive={pathname === to}>
             <S.SLink to={to}>
               <S.LinkIcon>{icon}</S.LinkIcon>
               <S.LinkLabel>{label}</S.LinkLabel>
