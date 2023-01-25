@@ -8,7 +8,7 @@ type StudentProps = {
   name: string;
   age: number;
   school: string;
-  school_id: string;
+  registry: string;
   district: string;
   street: string;
 };
@@ -48,7 +48,7 @@ export function Table({
                 <td>{student.name}</td>
                 <td>{student.age}</td>
                 <td>{student.school}</td>
-                <td>{student.school_id}</td>
+                <td>{student.registry}</td>
                 <td>{student.district}</td>
                 <td>{student.street}</td>
                 <S.TdActions>

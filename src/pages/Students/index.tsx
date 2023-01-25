@@ -15,7 +15,7 @@ type StudentProps = {
   name: string;
   age: number;
   school: string;
-  school_id: string;
+  registry: string;
   district: string;
   street: string;
   phone: string;
@@ -39,9 +39,11 @@ export function Student() {
 
   const getStudents = async () => {
     setIsLoading(true);
+
     const { data: students, error } = await supabase
       .from("students")
-      .select("*");
+      .select("*")
+      .order("id", { ascending: false });
 
     if (!error) {
       setStudents(students);
@@ -90,7 +92,7 @@ export function Student() {
           breakLabel="..."
           nextLabel={<HiOutlineChevronRight size={15} />}
           pageRangeDisplayed={5}
-          pageCount={10}
+          pageCount={5}
           activeClassName="active"
           previousLabel={<HiOutlineChevronLeft size={15} />}
         />

@@ -9,11 +9,11 @@ interface FormRowProps {
   colEnd?: number;
 }
 
-export const StudentByIdContainer = styled.section`
+export const EditStudentContainer = styled.section`
   flex: 1;
   padding: 2rem;
 `;
-export const StudentByIdContent = styled.div`
+export const EditStudentContent = styled.div`
   width: 100%;
   background: #ffffff;
   padding: 2rem;
@@ -57,12 +57,12 @@ export const FormLabel = styled.label`
   width: 100%;
 `;
 export const FormInput = styled.input`
+  font-size: 1rem;
   width: 100%;
   padding: 0.875rem;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background: #f9fafb;
-  font-size: 1rem;
 `;
 export const FormError = styled.span`
   width: 100%;
