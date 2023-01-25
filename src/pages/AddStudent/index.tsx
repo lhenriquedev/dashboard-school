@@ -1,10 +1,13 @@
-import { Form, useParams } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import supabase from "../../supabase";
 
 import * as S from "./styles";
 import { BackButton } from "../../components/elements/backButton";
 import { StudentForm } from "../../components/elements/forms/AddStudentForm";
-import { SubmitHandler } from "react-hook-form/dist/types";
+import "react-toastify/dist/ReactToastify.css";
+import { Loading } from "../../components/elements/Loading";
 
 interface FormDataProps {
   age: string;
@@ -18,10 +21,26 @@ interface FormDataProps {
 }
 
 export function AddStudent() {
-  const methods = useForm<FormDataProps>();
+  const navigate = useNavigate();
 
-  const onSubmit = (data: FormDataProps) => {
-    console.log(data);
+  const methods = useForm<FormDataProps>({
+    defaultValues: {
+      city: "Butiá",
+    },
+  });
+
+  const onSubmit = async (data: FormDataProps) => {
+    try {
+      await supabase.from("students").insert(data);
+      toast("Aluno cadastrado com sucesso", {
+        type: "success",
+      });
+      navigate("/students");
+    } catch (error) {
+      toast("Erro ao cadastrar aluno", {
+        type: "error",
+      });
+    }
   };
 
   // adicionar campo telefone, RG da mãe
@@ -36,7 +55,13 @@ export function AddStudent() {
         <FormProvider {...methods}>
           <S.FormControl onSubmit={methods.handleSubmit(onSubmit)}>
             <StudentForm />
-            <button>Salvar</button>
+            <button>
+              {methods.formState.isSubmitting ? (
+                <Loading size={20} />
+              ) : (
+                "Criar aluno"
+              )}
+            </button>
           </S.FormControl>
         </FormProvider>
       </S.AddStudentContent>
