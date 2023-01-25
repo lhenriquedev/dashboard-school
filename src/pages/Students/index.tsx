@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import supabase from "../../supabase";
+
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "./styles";
 import "../../styles/global.css";
 import { Table } from "./Table";
-import {
-  HiOutlineChevronLeft,
-  HiOutlineChevronRight,
-  HiOutlineMagnifyingGlass,
-} from "react-icons/hi2";
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
 import { BoxWithText } from "../../components/BoxWithText";
 
 type StudentProps = {
@@ -20,83 +18,12 @@ type StudentProps = {
   school_id: string;
   district: string;
   street: string;
+  phone: string;
 };
 
 export function Student() {
-  const [students, setStudents] = useState<StudentProps[]>([
-    {
-      id: 1,
-      name: "Luiz Henrique",
-      age: 22,
-      school: "Vis. de Mauá",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 2,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 3,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 4,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 5,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 6,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 7,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-    {
-      id: 8,
-      name: "Camila Nascente",
-      age: 21,
-      school: "Marechal Rondon",
-      school_id: "FAB12304DE",
-      district: "Centro",
-      street: "Rua do comércio",
-    },
-  ]);
+  const [students, setStudents] = useState<StudentProps[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const columns: string[] = [
     "Nome",
@@ -110,6 +37,18 @@ export function Student() {
 
   const navigate = useNavigate();
 
+  const getStudents = async () => {
+    setIsLoading(true);
+    const { data: students, error } = await supabase
+      .from("students")
+      .select("*");
+
+    if (!error) {
+      setStudents(students);
+    }
+    setIsLoading(false);
+  };
+
   const removeStudent = (id: number) => {
     const removedStudent = students.filter((student) => student.id !== id);
     setStudents(removedStudent);
@@ -119,10 +58,14 @@ export function Student() {
     navigate(`/students/${id}`);
   };
 
+  useEffect(() => {
+    getStudents();
+  }, []);
+
   return (
     <S.StudentContainer>
       <S.StudentData>
-        <BoxWithText />
+        <BoxWithText students={students} text="Alunos cadastrados" />
         <BoxWithText />
         <BoxWithText />
       </S.StudentData>
@@ -137,6 +80,7 @@ export function Student() {
         </S.TableHeader>
         <Table
           data={students}
+          isLoading={isLoading}
           columns={columns}
           onEdit={editStudent}
           onRemove={removeStudent}

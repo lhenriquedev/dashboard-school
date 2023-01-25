@@ -1,12 +1,14 @@
 import * as S from "./styles";
 
-export function BoxWithText() {
+export function BoxWithText({ students, text }: any) {
+  console.log(students);
+
   return (
     <S.BoxWithTextContainer>
       <header>
-        <span>Ainda nao sei oq fazer aqui</span>
+        <span>{text}</span>
       </header>
-      <span>50</span>
+      {students && <span>{students.length}</span>}
     </S.BoxWithTextContainer>
   );
 }
