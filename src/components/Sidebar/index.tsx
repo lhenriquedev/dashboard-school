@@ -9,18 +9,20 @@ export function Sidebar() {
 
   return (
     <S.Sidebar>
-      <S.Logo>Dashboard</S.Logo>
-      {linksArr.map((link) => {
-        const { icon, label, to } = link;
-        return (
-          <S.LinkContainer key={label} isActive={pathname === to}>
-            <S.SLink to={to}>
-              <S.LinkIcon>{icon}</S.LinkIcon>
-              <S.LinkLabel>{label}</S.LinkLabel>
-            </S.SLink>
-          </S.LinkContainer>
-        );
-      })}
+      <S.Logo>KazamaDash</S.Logo>
+      <nav>
+        {linksArr.map((link) => {
+          const { icon, label, to } = link;
+          return (
+            <S.LinkContainer key={label} isActive={pathname === to}>
+              <S.SLink to={to}>
+                <S.LinkIcon>{icon}</S.LinkIcon>
+                <S.LinkLabel>{label}</S.LinkLabel>
+              </S.SLink>
+            </S.LinkContainer>
+          );
+        })}
+      </nav>
       <S.Logout>
         <S.SLink to="/login">
           <S.LinkIcon>
