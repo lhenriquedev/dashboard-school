@@ -3,15 +3,7 @@ import * as S from "./styles";
 import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
 import { Loading } from "../../../components/elements/Loading";
 
-type StudentProps = {
-  id: number;
-  name: string;
-  age: number;
-  school: string;
-  registry: string;
-  district: string;
-  street: string;
-};
+import { StudentProps } from "../../../@types/types";
 
 interface TableProps {
   data: StudentProps[];
@@ -28,6 +20,8 @@ export function Table({
   onEdit,
   onRemove,
 }: TableProps) {
+  console.log(data);
+
   return (
     <S.Table>
       {isLoading ? (
@@ -36,32 +30,37 @@ export function Table({
         <>
           <thead>
             {/* <caption>Alunos</caption> */}
-            <tr>
+            <S.TableRowHeader>
               {columns.map((col) => (
-                <th key={col}>{col}</th>
+                <S.TableHead key={col}>{col}</S.TableHead>
               ))}
-            </tr>
+            </S.TableRowHeader>
           </thead>
           <tbody>
             {data.map((student) => (
-              <tr key={student.id}>
-                <td>{student.name}</td>
-                <td>{student.age}</td>
-                <td>{student.school}</td>
-                <td>{student.registry}</td>
-                <td>{student.district}</td>
-                <td>{student.street}</td>
+              <S.TableRow key={student.id}>
+                <S.TableCell>{student.name}</S.TableCell>
+                <S.TableCell>{student.age}</S.TableCell>
+                <S.TableCell>{student.school}</S.TableCell>
+                <S.TableCell>{student.street}</S.TableCell>
+                <S.TableCell>{student.district}</S.TableCell>
+                <S.TableCell>
+                  {student.status === "Matriculado" && (
+                    <S.Status statusColor="green">{student.status}</S.Status>
+                  )}
+                  {student.status === "Inativo" && (
+                    <S.Status statusColor="red">{student.status}</S.Status>
+                  )}
+                </S.TableCell>
                 <S.TdActions>
-                  <S.TableButton onClick={() => onEdit(student.id)}>
-                    <HiOutlinePencilSquare size={20} color="#3b82f6" />
-                    <span>Editar</span>
-                  </S.TableButton>
                   <S.TableButton onClick={() => onRemove(student.id)}>
-                    <HiOutlineTrash size={20} color="#ef4444" />
-                    <span>Excluir</span>
+                    <S.Trash />
+                  </S.TableButton>
+                  <S.TableButton onClick={() => onEdit(student.id)}>
+                    <S.EditPencil />
                   </S.TableButton>
                 </S.TdActions>
-              </tr>
+              </S.TableRow>
             ))}
           </tbody>
         </>

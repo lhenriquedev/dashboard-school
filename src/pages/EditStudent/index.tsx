@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { BackButton } from "../../components/elements/backButton";
+import { BackButton } from "../../components/elements/BackButton";
 import { Loading } from "../../components/elements/Loading";
 import supabase from "../../supabase";
 

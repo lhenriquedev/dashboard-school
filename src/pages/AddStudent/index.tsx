@@ -4,21 +4,11 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../supabase";
 
 import * as S from "./styles";
-import { BackButton } from "../../components/elements/backButton";
+import { BackButton } from "../../components/elements/BackButton";
 import { StudentForm } from "../../components/elements/forms/AddStudentForm";
 import "react-toastify/dist/ReactToastify.css";
 import { Loading } from "../../components/elements/Loading";
-
-interface FormDataProps {
-  age: string;
-  district: string;
-  city: string;
-  document: string;
-  name: string;
-  phone: string;
-  school: string;
-  street: string;
-}
+import { FormDataProps } from "../../@types/types";
 
 export function AddStudent() {
   const navigate = useNavigate();
@@ -26,6 +16,7 @@ export function AddStudent() {
   const methods = useForm<FormDataProps>({
     defaultValues: {
       city: "Butiá",
+      status: "Matriculado",
     },
   });
 

@@ -1,69 +1,55 @@
+import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
 import styled from "styled-components";
 
 export const Table = styled.table`
-  background: #ffffff;
-  margin-bottom: 2rem;
-  table-layout: fixed;
   width: 100%;
-  border-radius: 8px;
-
   border-collapse: collapse;
-  border-spacing: 0;
-  padding: 2rem;
-  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
+  border: 1px solid ${(props) => props.theme["neutral-200"]};
+  border-radius: 6px;
+  overflow: hidden;
+`;
 
-  thead {
-    margin: 2rem;
+export const TableHead = styled.th`
+  padding: 1rem;
+  text-align: left;
+  line-height: 1.6;
+`;
 
-    caption {
-      padding: 1rem;
-      font-size: 2rem;
+export const TableRowHeader = styled.tr`
+  text-align: left;
+  border-bottom: 1px solid ${(props) => props.theme["neutral-200"]};
+`;
 
-      margin-bottom: 1rem;
-    }
+export const TableRow = styled.tr`
+  border-bottom: 1px solid ${(props) => props.theme["neutral-200"]};
+`;
 
-    th {
-      text-align: left;
-      line-height: 20px;
-      padding: 0 1rem;
-      font-weight: 500;
-      color: #9ca3af;
-    }
-  }
-
-  tbody {
-    :before {
-      /* This doesn't work because of border-collapse */
-      line-height: 1em;
-      content: ".";
-      color: white; /* bacground color */
-      display: block;
-    }
-
-    tr {
-      color: #292d32;
-
-      &:nth-child(odd) {
-        background-color: #ecfdf5;
-      }
-
-      &:hover {
-        background: #d1fae5;
-      }
-
-      td {
-        width: fit-content;
-        padding: 1rem;
-        text-align: left;
-      }
-    }
-  }
+export const TableCell = styled.td`
+  padding: 1rem;
+  text-align: left;
 `;
 
 export const TdActions = styled.td`
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const STATUS_COLORS = {
+  red: "red-500",
+  green: "green-500",
+} as const;
+
+interface StatusProps {
+  statusColor: keyof typeof STATUS_COLORS;
+}
+
+export const Status = styled.span<StatusProps>`
+  background-color: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  color: ${(props) => props.theme["white"]};
 `;
 
 export const TableButton = styled.button`
@@ -86,5 +72,25 @@ export const TableButton = styled.button`
 
   &:hover {
     color: #10b981;
+  }
+`;
+
+export const Trash = styled(HiOutlineTrash)`
+  width: 20px;
+  height: 20px;
+  color: ${(props) => props.theme["red-500"]};
+
+  &:hover {
+    color: ${(props) => props.theme["red-700"]};
+  }
+`;
+
+export const EditPencil = styled(HiOutlinePencilSquare)`
+  width: 20px;
+  height: 20px;
+  color: ${(props) => props.theme["indigo-500"]};
+
+  &:hover {
+    color: ${(props) => props.theme["indigo-700"]};
   }
 `;
