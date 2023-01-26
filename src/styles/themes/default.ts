@@ -17,4 +17,6 @@ export const defaultTheme = {
   "indigo-300": "#a5b4fc",
   "indigo-500": "#6366f1",
   "indigo-700": "#4338ca",
+
+  "green-500": "#22c55e",
 };
