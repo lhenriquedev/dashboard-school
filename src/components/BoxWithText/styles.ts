@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const BoxWithTextContainer = styled.div`
-  background: #fff;
+  background: ${(props) => props.theme["white"]};
+  border: 1px solid ${(props) => props.theme["neutral-200"]};
   padding: 1rem;
   border-radius: 8px;
   text-align: center;

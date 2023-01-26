@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 type SidebarProps = {
@@ -12,47 +12,51 @@ export const Sidebar = styled.aside`
   width: 18.75rem;
   height: 100vh;
   padding: 1rem;
-  border-right: 1px solid #e5e7eb;
-  background: #ffffff;
+  background: ${(props) => props.theme["neutral-900"]};
 `;
 
 export const Logo = styled.h2`
   font-size: 2rem;
-  color: #10b981;
+  color: ${(props) => props.theme["neutral-100"]};
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 `;
 
-export const LinkContainer = styled.div<SidebarProps>`
-  background: ${({ isActive }) => (!isActive ? `transparent` : `#dcfce7;`)};
+export const LinkContainer = styled.li<SidebarProps>`
+  list-style: none;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 0.2rem 0;
-
-  :hover {
-    background: #dcfce7;
-    color: #065f46;
-    transition: background 200ms;
-  }
 `;
 
 export const Logout = styled.div`
   margin-top: auto;
+  border-radius: 6px;
+
+  :hover {
+    background-color: ${(props) => props.theme["neutral-700"]};
+  }
 `;
 
-export const SLink = styled(Link)`
+export const SLink = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
 
-  color: #6b7280;
+  color: ${(props) => props.theme["neutral-100"]};
   font-size: 1rem;
   padding: 8px;
 
-  border-radius: 8px;
+  border-radius: 6px;
+  transition: 150ms ease;
+
+  &.active,
+  &:hover {
+    background-color: ${(props) => props.theme["neutral-700"]};
+  }
 `;
 
 export const LinkIcon = styled.div`
