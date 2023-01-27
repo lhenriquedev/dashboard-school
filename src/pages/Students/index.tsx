@@ -14,6 +14,7 @@ import { StudentProps } from "../../@types/types";
 import { columns } from "../../data/columns";
 import { Greeting } from "../../components/common/greeting";
 import { getPagination } from "../../utils/getPagination";
+import { LoadingWrapper } from "../../components/elements/loadingWrapper";
 
 export function Student() {
   const [students, setStudents] = useState<StudentProps[]>([]);

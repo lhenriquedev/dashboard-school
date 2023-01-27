@@ -22,6 +22,7 @@ interface EditStudentProps {
 }
 
 import * as S from "./styles";
+import { LoadingWrapper } from "../../components/elements/loadingWrapper";
 
 export function EditStudent() {
   const [editedStudent, setEditedStudent] = useState<EditStudentProps>();
@@ -87,15 +88,14 @@ export function EditStudent() {
   }, [id]);
 
   return (
-    <S.EditStudentContainer>
-      <S.EditStudentContent>
-        <header>
-          <BackButton />
-          <h2>Editar aluno</h2>
-        </header>
-        {isLoading ? (
-          <Loading size={32} />
-        ) : (
+    <LoadingWrapper isLoading={isLoading}>
+      <S.EditStudentContainer>
+        <S.EditStudentContent>
+          <header>
+            <BackButton />
+            <h2>Editar aluno</h2>
+          </header>
+
           <S.FormControl onSubmit={handleSubmit(onSubmit)}>
             <S.FormGrid columns={4}>
               <S.FormRow colStart={1} colEnd={4}>
@@ -226,8 +226,8 @@ export function EditStudent() {
               {isSubmitting ? <Loading size={20} /> : "Salvar"}
             </button>
           </S.FormControl>
-        )}
-      </S.EditStudentContent>
-    </S.EditStudentContainer>
+        </S.EditStudentContent>
+      </S.EditStudentContainer>
+    </LoadingWrapper>
   );
 }

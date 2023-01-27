@@ -8,6 +8,7 @@ type SidebarProps = {
 export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
+  position: relative;
 
   width: 18.75rem;
   height: 100vh;

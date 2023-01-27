@@ -9,11 +9,12 @@ export const LoaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 `;
 
 export const Loader = styled.div<LoaderProps>`
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #34d399;
+  border-left-color: ${(props) => props.theme["indigo-700"]};
   border-radius: 50%;
   width: ${({ size }) => `${size}px`};
   height: ${({ size }) => `${size}px`};
