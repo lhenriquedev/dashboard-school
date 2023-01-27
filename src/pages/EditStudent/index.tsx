@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { BackButton } from "../../components/elements/BackButton";
-import { Loading } from "../../components/elements/Loading";
+import { BackButton } from "../../components/ui/button/backButton";
+import { Loading } from "../../components/ui/Loading";
 import supabase from "../../supabase";
 
 import { toast } from "react-toastify";

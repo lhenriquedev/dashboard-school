@@ -1,4 +1,8 @@
-import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
+import {
+  HiOutlinePencil,
+  HiOutlinePencilSquare,
+  HiOutlineTrash,
+} from "react-icons/hi2";
 import styled from "styled-components";
 
 export const Table = styled.table`
@@ -22,6 +26,10 @@ export const TableRowHeader = styled.tr`
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid ${(props) => props.theme["neutral-200"]};
+
+  &:hover {
+    background: ${(props) => props.theme["neutral-100"]};
+  }
 `;
 
 export const TableCell = styled.td`
@@ -85,7 +93,7 @@ export const Trash = styled(HiOutlineTrash)`
   }
 `;
 
-export const EditPencil = styled(HiOutlinePencilSquare)`
+export const EditPencil = styled(HiOutlinePencil)`
   width: 20px;
   height: 20px;
   color: ${(props) => props.theme["indigo-500"]};

@@ -44,3 +44,24 @@ export const SearchInputContainer = styled.div`
     outline: none;
   }
 `;
+export const PaginationContainer = styled.div`
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+export const PaginationButton = styled.button`
+  border: none;
+  background: ${(props) => props.theme["indigo-700"]};
+  padding: 0.5rem;
+  color: #fff;
+  border-radius: 6px;
+  transition: background 200ms;
+
+  &:hover {
+    background: ${(props) => props.theme["indigo-500"]};
+    cursor: pointer;
+  }
+`;

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import supabase from "../../supabase";
 
-import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
 
 import * as S from "./styles";
 import "../../styles/global.css";
 
-import { BoxWithText } from "../../components/BoxWithText";
+import { BoxWithText } from "../../components/common/boxWithText";
 import { Table } from "./Table";
 
 import { StudentProps } from "../../@types/types";
 import { columns } from "../../data/columns";
-import { Greeting } from "../../components/Greeting";
+import { Greeting } from "../../components/common/greeting";
+import { getPagination } from "../../utils/getPagination";
 
 export function Student() {
   const [students, setStudents] = useState<StudentProps[]>([]);
@@ -24,13 +24,18 @@ export function Student() {
   const getStudents = async () => {
     setIsLoading(true);
 
-    const { data: students, error } = await supabase
+    const {
+      data: newStudents,
+      error,
+      count,
+    } = await supabase
       .from("students")
-      .select("*")
+      .select("*", { count: "exact" })
+      .limit(10)
       .order("id", { ascending: false });
 
     if (!error) {
-      setStudents(students);
+      setStudents(newStudents);
     }
     setIsLoading(false);
   };
@@ -65,6 +70,14 @@ export function Student() {
           onRemove={removeStudent}
         />
       </S.StudentContent>
+      <S.PaginationContainer>
+        <S.PaginationButton>
+          <HiOutlineChevronLeft />
+        </S.PaginationButton>
+        <S.PaginationButton>
+          <HiOutlineChevronRight />
+        </S.PaginationButton>
+      </S.PaginationContainer>
     </S.StudentContainer>
   );
 }

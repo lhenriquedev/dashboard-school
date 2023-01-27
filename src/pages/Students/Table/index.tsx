@@ -1,7 +1,7 @@
 import * as S from "./styles";
 
 import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
-import { Loading } from "../../../components/elements/Loading";
+import { Loading } from "../../../components/ui/Loading";
 
 import { StudentProps } from "../../../@types/types";
 
@@ -20,8 +20,6 @@ export function Table({
   onEdit,
   onRemove,
 }: TableProps) {
-  console.log(data);
-
   return (
     <S.Table>
       {isLoading ? (

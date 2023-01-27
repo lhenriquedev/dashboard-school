@@ -12,12 +12,13 @@ export const Sidebar = styled.aside`
   width: 18.75rem;
   height: 100vh;
   padding: 1rem;
-  background: ${(props) => props.theme["neutral-900"]};
+  background: ${(props) => props.theme["neutral-50"]};
+  border-right: 1px solid ${(props) => props.theme["neutral-200"]};
 `;
 
 export const Logo = styled.h2`
   font-size: 2rem;
-  color: ${(props) => props.theme["neutral-100"]};
+  color: ${(props) => props.theme["neutral-700"]};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +47,7 @@ export const SLink = styled(NavLink)`
   align-items: center;
   text-decoration: none;
 
-  color: ${(props) => props.theme["neutral-100"]};
+  color: ${(props) => props.theme["neutral-700"]};
   font-size: 1rem;
   padding: 8px;
 
@@ -55,7 +56,7 @@ export const SLink = styled(NavLink)`
 
   &.active,
   &:hover {
-    background-color: ${(props) => props.theme["neutral-700"]};
+    background-color: ${(props) => props.theme["neutral-200"]};
   }
 `;
 
