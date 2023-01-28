@@ -37,7 +37,14 @@ export function Table({
           <tbody>
             {data.map((student) => (
               <S.TableRow key={student.id}>
-                <S.TableCell>{student.name}</S.TableCell>
+                <S.TableCell>
+                  <div>
+                    {student.image && (
+                      <S.TableCellImage loading="lazy" src={student.image} />
+                    )}
+                    {student.name}
+                  </div>
+                </S.TableCell>
                 <S.TableCell>{student.age}</S.TableCell>
                 <S.TableCell>{student.school}</S.TableCell>
                 <S.TableCell>{student.street}</S.TableCell>

@@ -31,13 +31,25 @@ export const TableRow = styled.tr`
   }
 `;
 
+export const TableCellImage = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+`;
+
 export const TableCell = styled.td`
   padding: 1rem;
   text-align: left;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export const TdActions = styled.td`
-  padding: 1rem 0;
+  padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;

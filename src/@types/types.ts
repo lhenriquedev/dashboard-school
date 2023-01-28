@@ -1,6 +1,6 @@
 export interface StudentProps {
   id: number;
-  img?: string;
+  image?: string;
   name: string;
   age: number;
   school: string;
