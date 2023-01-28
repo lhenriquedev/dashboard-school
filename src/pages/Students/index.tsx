@@ -63,6 +63,9 @@ export function Student() {
         <BoxWithText />
       </S.StudentData>
       <S.StudentContent>
+        <S.StudentTableHeader>
+          <h2>Alunos</h2>
+        </S.StudentTableHeader>
         <Table
           data={students}
           isLoading={isLoading}

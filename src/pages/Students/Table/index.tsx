@@ -44,10 +44,14 @@ export function Table({
                 <S.TableCell>{student.district}</S.TableCell>
                 <S.TableCell>
                   {student.status === "Matriculado" && (
-                    <S.Status statusColor="green">{student.status}</S.Status>
+                    <S.Status statusColor="green" statusTextColor="green">
+                      {student.status}
+                    </S.Status>
                   )}
                   {student.status === "Inativo" && (
-                    <S.Status statusColor="red">{student.status}</S.Status>
+                    <S.Status statusColor="red" statusTextColor="red">
+                      {student.status}
+                    </S.Status>
                   )}
                 </S.TableCell>
                 <S.TdActions>

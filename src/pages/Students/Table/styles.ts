@@ -10,7 +10,6 @@ export const Table = styled.table`
   border-collapse: collapse;
   border: 1px solid ${(props) => props.theme["neutral-200"]};
   border-radius: 6px;
-  overflow: hidden;
 `;
 
 export const TableHead = styled.th`
@@ -45,19 +44,40 @@ export const TdActions = styled.td`
 `;
 
 const STATUS_COLORS = {
-  red: "red-500",
-  green: "green-500",
+  red: "red-200",
+  green: "green-200",
+} as const;
+
+const STATUS_COLORS_TEXT = {
+  red: "red-800",
+  green: "green-800",
 } as const;
 
 interface StatusProps {
   statusColor: keyof typeof STATUS_COLORS;
+  statusTextColor: keyof typeof STATUS_COLORS_TEXT;
 }
 
 export const Status = styled.span<StatusProps>`
   background-color: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
-  color: ${(props) => props.theme["white"]};
+  color: ${(props) => props.theme[STATUS_COLORS_TEXT[props.statusTextColor]]};
+  font-weight: 500;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background-color: ${(props) =>
+      props.theme[STATUS_COLORS_TEXT[props.statusColor]]};
+  }
 `;
 
 export const TableButton = styled.button`
