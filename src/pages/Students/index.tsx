@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import supabase from "../../supabase";
 
 import { useNavigate } from "react-router-dom";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
+import {
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiOutlinePlus,
+} from "react-icons/hi2";
 
 import * as S from "./styles";
 import "../../styles/global.css";
@@ -59,12 +63,14 @@ export function Student() {
       <Greeting />
       <S.StudentData>
         <BoxWithText students={students} text="Alunos cadastrados" />
-        <BoxWithText />
-        <BoxWithText />
       </S.StudentData>
       <S.StudentContent>
         <S.StudentTableHeader>
           <h2>Alunos</h2>
+          <S.CreateStudentButton onClick={() => navigate("/add-student")}>
+            <HiOutlinePlus size={18} />
+            <span>Adicionar</span>
+          </S.CreateStudentButton>
         </S.StudentTableHeader>
         <Table
           data={students}

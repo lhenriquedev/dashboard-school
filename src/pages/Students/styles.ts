@@ -29,12 +29,35 @@ export const StudentTableHeader = styled.div`
   border-left: 1px solid ${(props) => props.theme["neutral-200"]};
   overflow: hidden;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   padding: 1rem;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 
   h2 {
     font-size: 1.25rem;
+  }
+`;
+
+export const CreateStudentButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background: ${(props) => props.theme["indigo-700"]};
+  border: none;
+  border-radius: 6px;
+  color: ${(props) => props.theme["white"]};
+  cursor: pointer;
+  transition: background 200ms;
+
+  &:hover {
+    background: ${(props) => props.theme["indigo-900"]};
   }
 `;
 

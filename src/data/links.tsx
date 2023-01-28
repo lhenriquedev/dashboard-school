@@ -20,9 +20,4 @@ export const linksArr = [
     icon: <HiOutlineUserGroup />,
     to: "/students",
   },
-  {
-    label: "Adicionar aluno",
-    icon: <HiOutlineUser />,
-    to: "/add-student",
-  },
 ];
