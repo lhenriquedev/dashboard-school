@@ -17,12 +17,11 @@ import { Table } from "./Table";
 import { StudentProps } from "../../@types/types";
 import { columns } from "../../data/columns";
 import { Greeting } from "../../components/common/greeting";
-import { getPagination } from "../../utils/getPagination";
-import { LoadingWrapper } from "../../components/elements/loadingWrapper";
 
 export function Student() {
   const [students, setStudents] = useState<StudentProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -54,6 +53,10 @@ export function Student() {
     navigate(`/students/${id}`);
   };
 
+  const openDeleteStudentDialog = () => {
+    setIsDeleteAlertOpen((state) => !state);
+  };
+
   useEffect(() => {
     getStudents();
   }, []);
@@ -73,11 +76,13 @@ export function Student() {
           </S.CreateStudentButton>
         </S.StudentTableHeader>
         <Table
-          data={students}
-          isLoading={isLoading}
           columns={columns}
+          data={students}
+          isDeleteDialogOpen={isDeleteAlertOpen}
+          isLoading={isLoading}
           onEdit={editStudent}
-          onRemove={removeStudent}
+          onRemoveStudent={removeStudent}
+          onOpenDialog={openDeleteStudentDialog}
         />
       </S.StudentContent>
       <S.PaginationContainer>

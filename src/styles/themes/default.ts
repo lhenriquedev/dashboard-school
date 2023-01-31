@@ -12,6 +12,7 @@ export const defaultTheme = {
   "neutral-800": "#262626",
   "neutral-900": "#171717",
 
+  "red-100": "#fee2e2",
   "red-200": "#fecaca",
   "red-500": "#ef4444",
   "red-700": "#b91c1c",
