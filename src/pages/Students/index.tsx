@@ -17,55 +17,17 @@ import { Table } from "./Table";
 import { StudentProps } from "../../@types/types";
 import { columns } from "../../data/columns";
 import { Greeting } from "../../components/common/greeting";
+import useStudent from "../../hooks/useStudents";
 
 export function Student() {
-  const [students, setStudents] = useState<StudentProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
-
+  const { data } = useStudent();
   const navigate = useNavigate();
-
-  const getStudents = async () => {
-    setIsLoading(true);
-
-    const {
-      data: newStudents,
-      error,
-      count,
-    } = await supabase
-      .from("students")
-      .select("*", { count: "exact" })
-      .limit(10)
-      .order("id", { ascending: false });
-
-    if (!error) {
-      setStudents(newStudents);
-    }
-    setIsLoading(false);
-  };
-
-  const removeStudent = (id: number) => {
-    const removedStudent = students.filter((student) => student.id !== id);
-    setStudents(removedStudent);
-  };
-
-  const editStudent = (id: number) => {
-    navigate(`/students/${id}`);
-  };
-
-  const openDeleteStudentDialog = () => {
-    setIsDeleteAlertOpen((state) => !state);
-  };
-
-  useEffect(() => {
-    getStudents();
-  }, []);
 
   return (
     <S.StudentContainer>
       <Greeting />
       <S.StudentData>
-        <BoxWithText students={students} text="Alunos cadastrados" />
+        <BoxWithText students={data} text="Alunos cadastrados" />
       </S.StudentData>
       <S.StudentContent>
         <S.StudentTableHeader>
@@ -75,15 +37,7 @@ export function Student() {
             <span>Adicionar</span>
           </S.CreateStudentButton>
         </S.StudentTableHeader>
-        <Table
-          columns={columns}
-          data={students}
-          isDeleteDialogOpen={isDeleteAlertOpen}
-          isLoading={isLoading}
-          onEdit={editStudent}
-          onRemoveStudent={removeStudent}
-          onOpenDialog={openDeleteStudentDialog}
-        />
+        <Table />
       </S.StudentContent>
       <S.PaginationContainer>
         <S.PaginationButton>

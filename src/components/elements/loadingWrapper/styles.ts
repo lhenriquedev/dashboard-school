@@ -4,6 +4,6 @@ export const LoadingContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  flex: 1;
   min-height: 100vh;
 `;

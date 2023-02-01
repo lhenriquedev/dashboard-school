@@ -5,7 +5,7 @@ import * as S from "./styles";
 interface AlertDialogProps {
   open: boolean;
   onOpenChange: () => void;
-  handleOnClick: (param?: any) => void;
+  handleOnClick: () => void;
 }
 
 export const AlertDialogComponent = ({
