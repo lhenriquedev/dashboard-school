@@ -32,7 +32,7 @@ export const FormControl = styled.form`
   button {
     width: 12.5rem;
     padding: 0.8rem;
-    background: #34d399;
+    background: ${(props) => props.theme["indigo-700"]};
     border: none;
     border-radius: 8px;
     font-size: 1rem;

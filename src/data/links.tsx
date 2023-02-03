@@ -5,11 +5,11 @@ import {
 } from "react-icons/hi2";
 
 export const linksArr = [
-  // {
-  //   label: "Dashboard",
-  //   icon: <HiOutlineSquares2X2 />,
-  //   to: "/",
-  // },
+  {
+    label: "Dashboard",
+    icon: <HiOutlineSquares2X2 />,
+    to: "/",
+  },
   // {
   //   label: "Meu perfil",
   //   icon: <HiOutlineUser />,
@@ -19,10 +19,5 @@ export const linksArr = [
     label: "Alunos",
     icon: <HiOutlineUserGroup />,
     to: "/students",
-  },
-  {
-    label: "Adicionar aluno",
-    icon: <HiOutlineUser />,
-    to: "/add-student",
   },
 ];
