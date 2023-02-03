@@ -7,9 +7,12 @@ import {
   HiOutlineBars3BottomRight,
 } from "react-icons/hi2";
 import { useState } from "react";
+import { useAuth } from "../../context/userContext";
 
 export function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const { user, signOutUser } = useAuth();
 
   const { pathname } = useLocation();
 
@@ -32,7 +35,7 @@ export function Sidebar() {
         const { icon, label, to } = link;
         return (
           <S.LinkContainer key={label} isActive={pathname === to}>
-            <S.SLink to={to} style={!isSidebarOpen ? { padding: 0 } : {}}>
+            <S.SLink to={to}>
               <S.LinkIcon>{icon}</S.LinkIcon>
               {isSidebarOpen && <S.LinkLabel>{label}</S.LinkLabel>}
             </S.SLink>
@@ -40,8 +43,8 @@ export function Sidebar() {
         );
       })}
 
-      <S.Logout>
-        <S.SLink to="/login" style={!isSidebarOpen ? { padding: 0 } : {}}>
+      <S.Logout onClick={signOutUser}>
+        <S.SLink to="/login">
           <S.LinkIcon>
             <HiArrowRightOnRectangle />
           </S.LinkIcon>

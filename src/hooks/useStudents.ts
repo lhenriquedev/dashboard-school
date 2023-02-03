@@ -5,7 +5,7 @@ import { StudentProps } from "../@types/types";
 
 const useStudent = () => {
   const [data, setData] = useState<StudentProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getStudent = async () => {
     try {

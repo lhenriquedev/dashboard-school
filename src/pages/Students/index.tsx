@@ -39,14 +39,14 @@ export function Student() {
         </S.StudentTableHeader>
         <Table />
       </S.StudentContent>
-      <S.PaginationContainer>
+      {/* <S.PaginationContainer>
         <S.PaginationButton>
           <HiOutlineChevronLeft />
         </S.PaginationButton>
         <S.PaginationButton>
           <HiOutlineChevronRight />
         </S.PaginationButton>
-      </S.PaginationContainer>
+      </S.PaginationContainer> */}
     </S.StudentContainer>
   );
 }

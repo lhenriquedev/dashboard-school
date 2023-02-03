@@ -46,7 +46,7 @@ export function StudentForm() {
           <S.FormLabel>Matrícula:</S.FormLabel>
           <S.FormInput
             type="text"
-            {...register("document", {
+            {...register("registry", {
               required: true,
             })}
           />

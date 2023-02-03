@@ -30,10 +30,6 @@ export function Table() {
     navigate(`/students/${id}`);
   };
 
-  if (isLoading) {
-    return <Loading size={52} />;
-  }
-
   return (
     <>
       <S.Table>
@@ -46,6 +42,10 @@ export function Table() {
           </S.TableRowHeader>
         </thead>
         <tbody>
+          {isLoading ? <Loading size={32} /> : null}
+          {data.length === 0 && !isLoading ? (
+            <p>Não há alunos cadastrados</p>
+          ) : null}
           {data.map((student) => (
             <S.TableRow key={student.id}>
               <S.TableCell>
@@ -61,7 +61,7 @@ export function Table() {
               <S.TableCell>{student.street}</S.TableCell>
               <S.TableCell>{student.district}</S.TableCell>
               <S.TableCell>
-                {student.status === "Matriculado" && (
+                {student.status === "Ativo" && (
                   <S.Status statusColor="green" statusTextColor="green">
                     {student.status}
                   </S.Status>

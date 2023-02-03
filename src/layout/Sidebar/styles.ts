@@ -11,9 +11,9 @@ export const Sidebar = styled.aside<SidebarProps>`
   flex-direction: column;
   position: relative;
 
-  width: ${({ isOpen }) => (isOpen ? `18.75rem` : `4.25rem`)};
+  width: ${({ isOpen }) => (isOpen ? `18.75rem` : `fit-content`)};
   height: 100vh;
-  padding: ${({ isOpen }) => (isOpen ? `1rem` : `1rem .5rem`)};
+  padding: 1rem;
   background: ${(props) => props.theme["neutral-50"]};
   border-right: 1px solid ${(props) => props.theme["neutral-200"]};
 `;
@@ -56,10 +56,10 @@ export const SLink = styled(NavLink)`
 
   color: ${(props) => props.theme["neutral-900"]};
   font-size: 1rem;
-  padding: 8px;
 
   border-radius: 6px;
   transition: 150ms ease;
+  padding: 1rem;
 
   &.active,
   &:hover {
@@ -69,9 +69,6 @@ export const SLink = styled(NavLink)`
 `;
 
 export const LinkIcon = styled.div`
-  padding: 8px 16px;
-  display: flex;
-
   svg {
     font-size: 1.25rem;
   }
