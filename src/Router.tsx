@@ -6,6 +6,7 @@ import { Student } from "./pages/Students";
 import { EditStudent } from "./pages/Students/EditStudent";
 import { Login } from "./pages/Login";
 import PrivateRoute from "./pages/PrivateRoute";
+import { Home } from "./pages/Home";
 
 export function Router() {
   return (
@@ -18,6 +19,7 @@ export function Router() {
           </PrivateRoute>
         }
       >
+        <Route path="/" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="students" element={<Student />} />
         <Route path="add-student" element={<AddStudent />} />

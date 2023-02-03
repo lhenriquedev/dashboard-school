@@ -10,6 +10,7 @@ export const LoaderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  width: 100%;
 `;
 
 export const Loader = styled.div<LoaderProps>`

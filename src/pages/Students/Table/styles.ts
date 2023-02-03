@@ -1,8 +1,4 @@
-import {
-  HiOutlinePencil,
-  HiOutlinePencilSquare,
-  HiOutlineTrash,
-} from "react-icons/hi2";
+import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import styled from "styled-components";
 
 export const Table = styled.table`
@@ -10,6 +6,28 @@ export const Table = styled.table`
   border-collapse: collapse;
   border: 1px solid ${(props) => props.theme["neutral-200"]};
   border-radius: 6px;
+`;
+
+export const TableLoading = styled.div`
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+`;
+
+export const TableNoUser = styled.div`
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  p {
+    font-size: 1.5rem;
+  }
 `;
 
 export const TableHead = styled.th`

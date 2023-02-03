@@ -8,6 +8,8 @@ import { AlertDialogComponent } from "../../../components/ui/alert";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useStudent from "../../../hooks/useStudents";
+import { toast } from "react-toastify";
+import supabase from "../../../supabase";
 
 export function Table() {
   const [selectedStudent, setSelectedStudent] = useState(0);
@@ -21,9 +23,15 @@ export function Table() {
     setIsAlertOpen(true);
   };
 
-  const removeStudent = (id: number) => {
-    const removedStudent = data.filter((student) => student.id !== id);
-    setData(removedStudent);
+  const removeStudent = async (id: number) => {
+    try {
+      await supabase.from("students").delete().eq("id", id);
+      const removedStudent = data.filter((student) => student.id !== id);
+      setData(removedStudent);
+      toast("Aluno deletado com sucesso!", { type: "success" });
+    } catch {
+      toast("Erro ao apagar o aluno!", { type: "error" });
+    }
   };
 
   const onEditStudent = (id: number) => {
@@ -41,11 +49,24 @@ export function Table() {
             ))}
           </S.TableRowHeader>
         </thead>
+
+        {isLoading ? (
+          <tbody style={{ position: "relative", height: "100px" }}>
+            <S.TableLoading>
+              <Loading size={32} />
+            </S.TableLoading>
+          </tbody>
+        ) : null}
+
+        {data.length === 0 && !isLoading ? (
+          <tbody style={{ position: "relative", height: "100px" }}>
+            <S.TableNoUser>
+              <p>Não há alunos cadastrados 😓</p>
+            </S.TableNoUser>
+          </tbody>
+        ) : null}
+
         <tbody>
-          {isLoading ? <Loading size={32} /> : null}
-          {data.length === 0 && !isLoading ? (
-            <p>Não há alunos cadastrados</p>
-          ) : null}
           {data.map((student) => (
             <S.TableRow key={student.id}>
               <S.TableCell>

@@ -1,6 +1,7 @@
 import { Session, User } from "@supabase/supabase-js";
 import { useEffect, useState, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import supabase from "../supabase";
 
 interface UserProviderProps {
@@ -17,24 +18,28 @@ interface UserContextProps {
 const UserContext = createContext({} as UserContextProps);
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<any | null>({} as User);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const signInUser = async (email: string, password: string) => {
+    setIsLoading(true);
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (!error) {
-      setSession(data.session);
-      setUser(data.user);
-
-      navigate("/");
+    if (error) {
+      toast("Email ou senha estão incorretos!", {
+        type: "error",
+      });
+      return;
     }
+
+    setUser(data.user);
+
+    navigate("/");
     setIsLoading(false);
   };
 
@@ -56,10 +61,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   useEffect(() => {
-    if (!session || !user) {
-      navigate("/login");
-    }
-
     getUserData();
   }, []);
 
